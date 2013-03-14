@@ -10,6 +10,7 @@
     <modules>
         <module>commands</module>
         <module>features</module>
+		<module>core</module>
     </modules>
     <build>
         <defaultGoal>install</defaultGoal>
