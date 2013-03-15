@@ -17,7 +17,7 @@ public class TestLogic {
         ElectricBill electricBill = new ElectricBill();
         electricBill.setCounterStatement(100);
         WaterBill waterBill = new WaterBill();
-        waterBill.setCounterStatement(100);
+        waterBill.setCounterStatement(100.451);
         MonthBill monthBill = new MonthBill();
         monthBill.setMonth(Months.January);
         monthBill.setElectricBill(electricBill);
