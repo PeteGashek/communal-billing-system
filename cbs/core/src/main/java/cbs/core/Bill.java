@@ -4,7 +4,7 @@ import javax.xml.bind.annotation.XmlElement;
 
 /**
  * @author Igor.Gladkiy
- *
+ * 
  */
 public class Bill {
     protected double counterStatement;
@@ -18,9 +18,4 @@ public class Bill {
         this.counterStatement = counterStatement;
     }
 
-    @Override
-    public String toString() {
-        return "Bill [counterStatement=" + counterStatement + "]";
-    }
-    
 }

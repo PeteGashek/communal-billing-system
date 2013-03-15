@@ -26,12 +26,37 @@ public final class UpdateMonth extends OsgiCommandSupport {
         return null;
     }
 
+    public int getYear() {
+        return year;
+    }
+
     public void setYear(int year) {
         this.year = year;
+    }
+
+    public Months getMonth() {
+        return month;
     }
 
     public void setMonth(Months month) {
         this.month = month;
     }
+
+    public double getElectricCounterStatement() {
+        return electricCounterStatement;
+    }
+
+    public void setElectricCounterStatement(double electricCounterStatement) {
+        this.electricCounterStatement = electricCounterStatement;
+    }
+
+    public double getWaterCounterStatement() {
+        return waterCounterStatement;
+    }
+
+    public void setWaterCounterStatement(double waterCounterStatement) {
+        this.waterCounterStatement = waterCounterStatement;
+    }
+
 
 }

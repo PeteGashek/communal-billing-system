@@ -7,5 +7,8 @@
         <command name="cbs/update">
             <action class="cbs.commands.UpdateMonth" />
         </command>
+        <command name="cbs/list">
+            <action class="cbs.commands.ShowList" />
+        </command>
     </command-bundle>
 </blueprint>

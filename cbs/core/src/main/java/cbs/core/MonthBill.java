@@ -51,10 +51,4 @@ public class MonthBill {
         return this.getMonth().hashCode();
     }
 
-    @Override
-    public String toString() {
-        return "MonthBill [month=" + month + ", \n" + "electricBill="
-                + electricBill + ", \nwaterBill=" + waterBill + "]";
-    }
-
 }

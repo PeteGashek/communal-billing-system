@@ -47,9 +47,4 @@ public class YearBill {
         this.number = number;
     }
 
-    @Override
-    public String toString() {
-        return "YearBill [number=" + number + ", \nmonths=" + months + "]";
-    }
-
 }
