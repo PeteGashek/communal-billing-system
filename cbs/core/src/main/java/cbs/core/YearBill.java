@@ -5,7 +5,7 @@ import java.util.LinkedHashSet;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
-@XmlRootElement
+@XmlRootElement(name = "year")
 public class YearBill {
     private  LinkedHashSet<MonthBill> months;
 

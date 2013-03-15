@@ -3,14 +3,14 @@ package cbs.core;
 import javax.xml.bind.annotation.XmlElement;
 
 public class Bill {
-    protected long counterStatement;
+    protected double counterStatement;
 
-    public long getCounterStatement() {
+    public double getCounterStatement() {
         return counterStatement;
     }
 
     @XmlElement
-    public void setCounterStatement(long counterStatement) {
+    public void setCounterStatement(double counterStatement) {
         this.counterStatement = counterStatement;
     }
 }

@@ -1,7 +1,11 @@
 package cbs.core;
 
+<<<<<<< HEAD
 import java.io.File;
 import java.util.LinkedHashSet;
+=======
+import java.util.ArrayList;
+>>>>>>> ae1e3a81442bc4c360de78deaa520d33722da6ba
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
@@ -14,36 +18,36 @@ public class TestLogic {
      */
     public static void main(String[] args) {
         // TODO Auto-generated method stub
-        
+
         ElectricBill electricBill = new ElectricBill();
         electricBill.setCounterStatement(100);
         WaterBill waterBill = new WaterBill();
-        waterBill.setCounterStatement(100);
+        waterBill.setCounterStatement(100.451);
         MonthBill monthBill = new MonthBill();
-        monthBill.setMonthNumber(0);
+        monthBill.setMonth(Months.January);
         monthBill.setElectricBill(electricBill);
         monthBill.setWaterBill(waterBill);
         YearBill yearBill = new YearBill();
         LinkedHashSet<MonthBill> al = new  LinkedHashSet<MonthBill>();
         al.add(monthBill);
         yearBill.setMonths(al);
-        
+
         //
         try {
-            
-            File file = new File("G:\\test.xml");
+
+            // File file = new File("E:\\test.xml");
             JAXBContext jaxbContext = JAXBContext.newInstance(YearBill.class);
             Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
-     
+
             // output pretty printed
             jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-     
-            jaxbMarshaller.marshal(yearBill, file);
+
+            // jaxbMarshaller.marshal(yearBill, file);
             jaxbMarshaller.marshal(yearBill, System.out);
-     
-              } catch (JAXBException e) {
+
+        } catch (JAXBException e) {
             e.printStackTrace();
-              }
+        }
     }
 
 }
