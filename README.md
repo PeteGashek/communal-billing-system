@@ -16,4 +16,6 @@ in container execute:
 
 
 
-        cbs:hello
+        cbs:newyear arg
+
+Where arg is number of year (for example 2013). 
