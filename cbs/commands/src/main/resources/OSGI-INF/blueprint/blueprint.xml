@@ -4,5 +4,8 @@
         <command name="cbs/newyear">
             <action class="cbs.commands.CreateYear" />
         </command>
+        <command name="cbs/update">
+            <action class="cbs.commands.UpdateMonth" />
+        </command>
     </command-bundle>
 </blueprint>
