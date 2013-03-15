@@ -39,8 +39,8 @@ public class MonthBill {
 
     @Override
     public boolean equals(Object obj) {
-        if (obj == this) {
-            return ((MonthBill) obj).getMonth().equals(this.getMonth());
+        if (obj instanceof MonthBill) {
+            return (((MonthBill) obj).getMonth().equals(this.getMonth()));
         } else {
             return false;
         }
