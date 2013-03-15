@@ -29,6 +29,9 @@
                             javax.jws,
                             javax.xml.bind.*
                         </Import-Package>
+                         <Export-Package>
+                            cbs.core
+                        </Export-Package>
                     </instructions>
                 </configuration>
             </plugin>

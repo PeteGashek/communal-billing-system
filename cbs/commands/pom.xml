@@ -20,6 +20,12 @@
             <version>2.2.9</version>
             <type>bundle</type>
         </dependency>
+        <dependency>
+            <groupId>org.room72.cbs</groupId>
+            <artifactId>core</artifactId>
+            <version>0.0.1</version>
+            <type>bundle</type>
+        </dependency>
     </dependencies>
 
     <build>
@@ -32,8 +38,11 @@
                     <instructions>
                         <Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
                         <Require-Bundle>
+                        
                         </Require-Bundle>
                         <Import-Package>
+                            
+                            cbs.core,
                             javax.jws,
                             javax.xml.bind,
                             org.apache.felix.service.command,

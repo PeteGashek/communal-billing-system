@@ -4,5 +4,7 @@
         <feature>cxf</feature>
         <bundle>mvn:${project.groupId}/commands/${project.version}
         </bundle>
+        <bundle>mvn:${project.groupId}/core/${project.version}
+        </bundle>
     </feature>
 </features>
