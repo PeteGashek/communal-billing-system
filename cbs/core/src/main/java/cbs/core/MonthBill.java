@@ -37,4 +37,13 @@ public class MonthBill {
         this.month = month;
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof MonthBill) {
+            return ((MonthBill) obj).getMonth().equals(this.getMonth());
+        } else {
+            return false;
+        }
+    }
+
 }
