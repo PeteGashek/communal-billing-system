@@ -25,7 +25,7 @@ public class Commands {
                 e.printStackTrace();
             }
             YearBill yearBill = new YearBill();
-            yearBill.setNumber(2013);
+            yearBill.setNumber(year);
             JAXB.marshal(yearBill, yearStatement);
             System.out.println("File "+yearStatement+" was created");
         }
