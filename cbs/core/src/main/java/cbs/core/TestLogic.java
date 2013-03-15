@@ -1,7 +1,7 @@
 package cbs.core;
 
 import java.io.File;
-import java.util.ArrayList;
+import java.util.LinkedHashSet;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
@@ -24,7 +24,7 @@ public class TestLogic {
         monthBill.setElectricBill(electricBill);
         monthBill.setWaterBill(waterBill);
         YearBill yearBill = new YearBill();
-        ArrayList<MonthBill> al = new ArrayList<MonthBill>();
+        LinkedHashSet<MonthBill> al = new  LinkedHashSet<MonthBill>();
         al.add(monthBill);
         yearBill.setMonths(al);
         

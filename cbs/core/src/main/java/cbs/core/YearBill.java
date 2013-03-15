@@ -1,20 +1,20 @@
 package cbs.core;
 
-import java.util.List;
+import java.util.LinkedHashSet;
 
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
 public class YearBill {
-    private List<MonthBill> months;
+    private  LinkedHashSet<MonthBill> months;
 
-    public List<MonthBill> getMonths() {
+    public LinkedHashSet<MonthBill> getMonths() {
         return months;
     }
 
     @XmlElement
-    public void setMonths(List<MonthBill> months) {
+    public void setMonths( LinkedHashSet<MonthBill> months) {
         this.months = months;
     }
 }
