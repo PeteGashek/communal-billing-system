@@ -2,11 +2,13 @@ package cbs.core;
 
 import java.util.LinkedHashSet;
 
+import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement(name = "year")
 public class YearBill {
+    private int number;
     private LinkedHashSet<MonthBill> months;
 
     public YearBill() {
@@ -34,5 +36,14 @@ public class YearBill {
     @XmlElement
     public void setMonths(LinkedHashSet<MonthBill> months) {
         this.months = months;
+    }
+
+    public int getNumber() {
+        return number;
+    }
+
+    @XmlAttribute(name = "number")
+    public void setNumber(int number) {
+        this.number = number;
     }
 }

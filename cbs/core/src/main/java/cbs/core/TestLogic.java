@@ -38,6 +38,7 @@ public class TestLogic {
 //        monthBill2.setWaterBill(waterBill2);
         
         YearBill yearBill = new YearBill();
+        yearBill.setNumber(2013);
 //        LinkedHashSet<MonthBill> al = new  LinkedHashSet<MonthBill>();
 //        al.add(monthBill);
 //        al.add(monthBill2);
