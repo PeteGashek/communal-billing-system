@@ -10,7 +10,7 @@
         <command name="cbs/list">
             <action class="cbs.commands.ShowList" />
         </command>
-                <command name="cbs/clear">
+        <command name="cbs/clear">
             <action class="cbs.commands.ClearMonth" />
         </command>
     </command-bundle>

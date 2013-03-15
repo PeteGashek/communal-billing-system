@@ -18,8 +18,7 @@ public class Commands {
 
     public static void createYear(int year) {
         new File(CbsConfig.data).mkdirs();
-        File yearStatement = new File(CbsConfig.data
-                + Integer.valueOf(year).toString() + ".xml");
+        File yearStatement = new File(CbsConfig.data + Integer.valueOf(year).toString() + ".xml");
         if (yearStatement.exists()) {
             System.out.println("File already exsists");
         } else {
@@ -35,34 +34,29 @@ public class Commands {
         }
     }
 
-    public static void updateMonth(int year, Months month,
-            double electricCounterStatement, double waterCounterStatement) {
-        YearBill yearBill = JAXB.unmarshal(new File(CbsConfig.data
-                + Integer.valueOf(year).toString() + ".xml"), YearBill.class);
+    public static void updateMonth(int year, Months month, double electricCounterStatement,
+            double waterCounterStatement) {
+        YearBill yearBill = JAXB.unmarshal(new File(CbsConfig.data + Integer.valueOf(year).toString()
+                + ".xml"), YearBill.class);
         LinkedHashSet<MonthBill> monthBills = yearBill.getMonths();
         for (MonthBill monthBill : monthBills) {
             if (monthBill.getMonth().equals(month)) {
-                monthBill.getElectricBill().setCounterStatement(
-                        electricCounterStatement);
-                monthBill.getWaterBill().setCounterStatement(
-                        waterCounterStatement);
+                monthBill.getElectricBill().setCounterStatement(electricCounterStatement);
+                monthBill.getWaterBill().setCounterStatement(waterCounterStatement);
             }
         }
         yearBill.setMonths(monthBills);
-        JAXB.marshal(yearBill, new File(CbsConfig.data
-                + Integer.valueOf(year).toString() + ".xml"));
+        JAXB.marshal(yearBill, new File(CbsConfig.data + Integer.valueOf(year).toString() + ".xml"));
     }
 
     public static void showList(int year, Months month) {
-        YearBill yearBill = JAXB.unmarshal(new File(CbsConfig.data
-                + Integer.valueOf(year).toString() + ".xml"), YearBill.class);
+        YearBill yearBill = JAXB.unmarshal(new File(CbsConfig.data + Integer.valueOf(year).toString()
+                + ".xml"), YearBill.class);
         if (month == null) {
             try {
-                JAXBContext jaxbContext = JAXBContext
-                        .newInstance(YearBill.class);
+                JAXBContext jaxbContext = JAXBContext.newInstance(YearBill.class);
                 Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
-                jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT,
-                        true);
+                jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
                 jaxbMarshaller.marshal(yearBill, System.out);
             } catch (JAXBException e) {
                 e.printStackTrace();
@@ -72,11 +66,9 @@ public class Commands {
             for (MonthBill monthBill : monthBills) {
                 if (monthBill.getMonth().equals(month)) {
                     try {
-                        JAXBContext jaxbContext = JAXBContext
-                                .newInstance(MonthBill.class);
+                        JAXBContext jaxbContext = JAXBContext.newInstance(MonthBill.class);
                         Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
-                        jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT,
-                                true);
+                        jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
                         jaxbMarshaller.marshal(monthBill, System.out);
                     } catch (JAXBException e) {
                         e.printStackTrace();
@@ -86,10 +78,11 @@ public class Commands {
         }
 
     }
+
     //
     public static void clearMonth(int year, Months month) {
-        YearBill yearBill = JAXB.unmarshal(new File(CbsConfig.data
-                + Integer.valueOf(year).toString() + ".xml"), YearBill.class);
+        YearBill yearBill = JAXB.unmarshal(new File(CbsConfig.data + Integer.valueOf(year).toString()
+                + ".xml"), YearBill.class);
         LinkedHashSet<MonthBill> monthBills = yearBill.getMonths();
         for (MonthBill monthBill : monthBills) {
             if (monthBill.getMonth().equals(month)) {
@@ -98,8 +91,7 @@ public class Commands {
             }
         }
         yearBill.setMonths(monthBills);
-        JAXB.marshal(yearBill, new File(CbsConfig.data
-                + Integer.valueOf(year).toString() + ".xml"));
+        JAXB.marshal(yearBill, new File(CbsConfig.data + Integer.valueOf(year).toString() + ".xml"));
     }
     //
 }

@@ -10,9 +10,10 @@ import cbs.core.Months;
 public final class ClearMonth extends OsgiCommandSupport {
     @Argument(index = 0, name = "year", description = "year", required = true, multiValued = false)
     private int year;
-    
+
     @Argument(index = 1, name = "month", description = "month", required = true, multiValued = false)
     private Months month;
+
     @Override
     protected Object doExecute() throws Exception {
         Commands.clearMonth(year, month);
@@ -34,8 +35,5 @@ public final class ClearMonth extends OsgiCommandSupport {
     public void setMonth(Months month) {
         this.month = month;
     }
-
-
-
 
 }
