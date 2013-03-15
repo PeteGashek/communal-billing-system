@@ -27,7 +27,7 @@
                         </Require-Bundle>
                         <Import-Package>
                             javax.jws,
-                            javax.xml.bind.annotation
+                            javax.xml.bind.*
                         </Import-Package>
                     </instructions>
                 </configuration>
