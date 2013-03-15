@@ -1,12 +1,8 @@
 package cbs.core;
 
-<<<<<<< HEAD
+
 import java.io.File;
 import java.util.LinkedHashSet;
-=======
-import java.util.ArrayList;
->>>>>>> ae1e3a81442bc4c360de78deaa520d33722da6ba
-
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
