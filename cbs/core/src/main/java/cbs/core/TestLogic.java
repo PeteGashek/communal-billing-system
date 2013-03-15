@@ -21,6 +21,12 @@ public class TestLogic {
         WaterBill waterBill = new WaterBill();
         waterBill.setCounterStatement(100.451);
         
+        ElectricBill electricBill2 = new ElectricBill();
+        electricBill2.setCounterStatement(123);
+        
+        WaterBill waterBill2 = new WaterBill();
+        waterBill2.setCounterStatement(110.351);
+        
         MonthBill monthBill = new MonthBill();
         monthBill.setMonth(Months.January);
         monthBill.setElectricBill(electricBill);
@@ -28,8 +34,8 @@ public class TestLogic {
         
         MonthBill monthBill2 = new MonthBill();
         monthBill2.setMonth(Months.January);
-        monthBill2.setElectricBill(electricBill);
-        monthBill2.setWaterBill(waterBill);
+        monthBill2.setElectricBill(electricBill2);
+        monthBill2.setWaterBill(waterBill2);
         
         YearBill yearBill = new YearBill();
         LinkedHashSet<MonthBill> al = new  LinkedHashSet<MonthBill>();
