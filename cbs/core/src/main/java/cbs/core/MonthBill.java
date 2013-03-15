@@ -40,15 +40,21 @@ public class MonthBill {
     @Override
     public boolean equals(Object obj) {
         if (obj instanceof MonthBill) {
-            return (this.getMonth().equals(((MonthBill)obj).getMonth()));
+            return (this.getMonth().equals(((MonthBill) obj).getMonth()));
         } else {
             return false;
         }
     }
-    
+
     @Override
     public int hashCode() {
         return this.getMonth().hashCode();
+    }
+
+    @Override
+    public String toString() {
+        return "MonthBill [month=" + month + ", \n" + "electricBill="
+                + electricBill + ", \nwaterBill=" + waterBill + "]";
     }
 
 }

@@ -46,4 +46,10 @@ public class YearBill {
     public void setNumber(int number) {
         this.number = number;
     }
+
+    @Override
+    public String toString() {
+        return "YearBill [number=" + number + ", \nmonths=" + months + "]";
+    }
+
 }
