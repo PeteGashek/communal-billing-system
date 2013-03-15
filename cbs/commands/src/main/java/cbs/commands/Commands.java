@@ -79,19 +79,20 @@ public class Commands {
 
     }
 
-    //
     public static void clearMonth(int year, Months month) {
-        YearBill yearBill = JAXB.unmarshal(new File(CbsConfig.data + Integer.valueOf(year).toString()
-                + ".xml"), YearBill.class);
-        LinkedHashSet<MonthBill> monthBills = yearBill.getMonths();
-        for (MonthBill monthBill : monthBills) {
-            if (monthBill.getMonth().equals(month)) {
-                monthBill.getElectricBill().setCounterStatement(-1);
-                monthBill.getWaterBill().setCounterStatement(-1);
-            }
-        }
-        yearBill.setMonths(monthBills);
-        JAXB.marshal(yearBill, new File(CbsConfig.data + Integer.valueOf(year).toString() + ".xml"));
+        updateMonth(year, month, -1, -1);
+        // YearBill yearBill = JAXB.unmarshal(new File(CbsConfig.data +
+        // Integer.valueOf(year).toString()
+        // + ".xml"), YearBill.class);
+        // LinkedHashSet<MonthBill> monthBills = yearBill.getMonths();
+        // for (MonthBill monthBill : monthBills) {
+        // if (monthBill.getMonth().equals(month)) {
+        // monthBill.getElectricBill().setCounterStatement(-1);
+        // monthBill.getWaterBill().setCounterStatement(-1);
+        // }
+        // }
+        // yearBill.setMonths(monthBills);
+        // JAXB.marshal(yearBill, new File(CbsConfig.data +
+        // Integer.valueOf(year).toString() + ".xml"));
     }
-    //
 }
