@@ -6,14 +6,15 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
 public class MonthBill {
-    private int monthNumber;
-    ElectricBill electricBill;
+    private Months month;
+    private ElectricBill electricBill;
+    private WaterBill waterBill;
 
     public ElectricBill getElectricBill() {
         return electricBill;
     }
 
-    @XmlElement
+    @XmlElement(name = "electic")
     public void setElectricBill(ElectricBill electricBill) {
         this.electricBill = electricBill;
     }
@@ -22,19 +23,18 @@ public class MonthBill {
         return waterBill;
     }
 
-    @XmlElement
+    @XmlElement(name = "water")
     public void setWaterBill(WaterBill waterBill) {
         this.waterBill = waterBill;
     }
 
-    public int getMonthNumber() {
-        return monthNumber;
+    public Months getMonth() {
+        return month;
     }
 
-    @XmlAttribute
-    public void setMonthNumber(int monthNumber) {
-        this.monthNumber = monthNumber;
+    @XmlAttribute(name = "name")
+    public void setMonth(Months month) {
+        this.month = month;
     }
 
-    WaterBill waterBill;
 }
