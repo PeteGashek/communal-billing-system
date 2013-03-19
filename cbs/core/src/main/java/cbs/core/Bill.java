@@ -1,5 +1,10 @@
 package cbs.core;
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 654791b98866c92a9ee5a7e98d1b690db9dd9030
 import java.util.List;
 
 import javax.xml.bind.annotation.XmlAttribute;
@@ -17,8 +22,21 @@ import org.joda.time.YearMonth;
  */
 @XmlRootElement
 public class Bill {
+<<<<<<< HEAD
     private YearMonth date;
     private List<Service> services;
+=======
+    private String date;
+
+    public String getDate() {
+        return date;
+    }
+
+    @XmlAttribute
+    public void setDate(String date) {
+        this.date = date;
+    }
+>>>>>>> 654791b98866c92a9ee5a7e98d1b690db9dd9030
 
     public List<Service> getServices() {
         return services;
