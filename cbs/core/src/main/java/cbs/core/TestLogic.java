@@ -1,65 +1,39 @@
 package cbs.core;
 
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
-import java.io.File;
-import java.util.LinkedHashSet;
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBException;
-import javax.xml.bind.Marshaller;
+import javax.xml.bind.JAXB;
 
 public class TestLogic {
 
     /**
-* @param args
-*/
+     * @param args
+     */
     public static void main(String[] args) {
-        // TODO Auto-generated method stub
-
-// ElectricBill electricBill = new ElectricBill();
-// electricBill.setCounterStatement(100);
-//
-// WaterBill waterBill = new WaterBill();
-// waterBill.setCounterStatement(100.451);
-//
-// ElectricBill electricBill2 = new ElectricBill();
-// electricBill2.setCounterStatement(123);
-//
-// WaterBill waterBill2 = new WaterBill();
-// waterBill2.setCounterStatement(110.351);
-//
-// MonthBill monthBill = new MonthBill();
-// monthBill.setMonth(Months.January);
-// monthBill.setElectricBill(electricBill);
-// monthBill.setWaterBill(waterBill);
-//
-// MonthBill monthBill2 = new MonthBill();
-// monthBill2.setMonth(Months.January);
-// monthBill2.setElectricBill(electricBill2);
-// monthBill2.setWaterBill(waterBill2);
-        
-        YearBill yearBill = new YearBill();
-        yearBill.setNumber(2013);
-// LinkedHashSet<MonthBill> al = new LinkedHashSet<MonthBill>();
-// al.add(monthBill);
-// al.add(monthBill2);
-// yearBill.setMonths(al);
-
+        Service uncountable = new Service();
+        uncountable.setServiceName("internet");
+        uncountable.setPayment(500.2325);
         //
-        try {
+        CountableService countable = new CountableService();
+        countable.setServiceName("electricity");
+        countable.setPayment(2121.033);
+        countable.setCounter(223.22);
+        //
+        Bill bill = new Bill();
+        bill.setDate(new Date());
+        List<Service> all = new ArrayList<Service>();
+        all.add(countable);
+        all.add(uncountable);
+        bill.setServices(all);
+        //
+        Bills allBills = new Bills();
+        List<Bill> output = new ArrayList<Bill>();
+        output.add(bill);
+        allBills.setBills(output);
+        //
+        JAXB.marshal(allBills, System.out);
 
-            // File file = new File("E:\\test.xml");
-            JAXBContext jaxbContext = JAXBContext.newInstance(YearBill.class);
-            Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
-
-            // output pretty printed
-            jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-
-            // jaxbMarshaller.marshal(yearBill, file);
-            jaxbMarshaller.marshal(yearBill, System.out);
-
-        } catch (JAXBException e) {
-            e.printStackTrace();
-        }
     }
-
 }

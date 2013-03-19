@@ -1,5 +1,9 @@
 package cbs.core;
 
+import java.util.Date;
+import java.util.List;
+
+import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 
 /**
@@ -7,15 +11,25 @@ import javax.xml.bind.annotation.XmlElement;
  * 
  */
 public class Bill {
-    protected double counterStatement;
+    private Date date;
 
-    public double getCounterStatement() {
-        return counterStatement;
+    public Date getDate() {
+        return date;
+    }
+
+    @XmlAttribute
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public List<Service> getServices() {
+        return services;
     }
 
     @XmlElement
-    public void setCounterStatement(double counterStatement) {
-        this.counterStatement = counterStatement;
+    public void setServices(List<Service> services) {
+        this.services = services;
     }
 
+    private List<Service> services;
 }
