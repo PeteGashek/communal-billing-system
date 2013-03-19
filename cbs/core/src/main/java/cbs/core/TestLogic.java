@@ -1,6 +1,7 @@
 package cbs.core;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -18,11 +19,16 @@ public class TestLogic {
         //
         CountableService countable = new CountableService();
         countable.setServiceName("electricity");
-        countable.setPayment(2121.033);
         countable.setCounter(223.22);
+        countable.setPayment(2121.033);
+        //
+        Calendar cal1 = Calendar.getInstance();//
+        String year=Integer.valueOf(cal1.get(Calendar.YEAR)).toString();
+        String month= Integer.valueOf(cal1.get(Calendar.MONTH)).toString();
+        String curDate = year+' '+month;
         //
         Bill bill = new Bill();
-        bill.setDate(new Date());
+        bill.setDate(curDate);
         List<Service> all = new ArrayList<Service>();
         all.add(countable);
         all.add(uncountable);

@@ -1,6 +1,7 @@
 package cbs.core;
 
-import java.util.Date;
+
+
 import java.util.List;
 
 import javax.xml.bind.annotation.XmlAttribute;
@@ -14,14 +15,14 @@ import javax.xml.bind.annotation.XmlRootElement;
  */
 @XmlRootElement
 public class Bill {
-    private Date date;
+    private String date;
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
     @XmlAttribute
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 
