@@ -1,12 +1,15 @@
 package cbs.core;
 
-import java.util.Date;
 import java.util.List;
 
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElements;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+
+import org.joda.time.YearMonth;
+
 
 /**
  * @author Igor.Gladkiy
@@ -14,28 +17,27 @@ import javax.xml.bind.annotation.XmlRootElement;
  */
 @XmlRootElement
 public class Bill {
-    private Date date;
-
-    public Date getDate() {
-        return date;
-    }
-
-    @XmlAttribute
-    public void setDate(Date date) {
-        this.date = date;
-    }
+    private YearMonth date;
+    private List<Service> services;
 
     public List<Service> getServices() {
         return services;
     }
 
-    @XmlElements({
-        @XmlElement(name="service", type=Service.class),
-        @XmlElement(name="service", type=CountableService.class)
-    })
+    @XmlElements({ @XmlElement(name = "service", type = Service.class),
+            @XmlElement(name = "service", type = CountableService.class) })
     public void setServices(List<Service> services) {
         this.services = services;
     }
 
-    private List<Service> services;
+    public YearMonth getDate() {
+        return date;
+    }
+
+    @XmlAttribute
+    @XmlJavaTypeAdapter(YearMontAdaptor.class)
+    public void setDate(YearMonth date) {
+        this.date = date;
+    }
+
 }

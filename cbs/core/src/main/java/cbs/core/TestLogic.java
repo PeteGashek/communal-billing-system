@@ -1,17 +1,22 @@
 package cbs.core;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 import javax.xml.bind.JAXB;
 
+import org.joda.time.YearMonth;
+
+
 public class TestLogic {
 
     /**
      * @param args
+     * @throws ParseException 
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ParseException {
         Service uncountable = new Service();
         uncountable.setServiceName("internet");
         uncountable.setPayment(500.2325);
@@ -22,7 +27,7 @@ public class TestLogic {
         countable.setCounter(223.22);
         //
         Bill bill = new Bill();
-        bill.setDate(new Date());
+        bill.setDate(new YearMonth(2013, 3));
         List<Service> all = new ArrayList<Service>();
         all.add(countable);
         all.add(uncountable);
@@ -34,6 +39,6 @@ public class TestLogic {
         allBills.setBills(output);
         //
         JAXB.marshal(allBills, System.out);
-
+        
     }
 }
