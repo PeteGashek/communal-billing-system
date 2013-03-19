@@ -2,8 +2,6 @@ package cbs.core;
 
 import java.text.ParseException;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 import javax.xml.bind.JAXB;
@@ -13,10 +11,6 @@ import org.joda.time.YearMonth;
 
 public class TestLogic {
 
-    /**
-     * @param args
-     * @throws ParseException 
-     */
     public static void main(String[] args) throws ParseException {
         Service uncountable = new Service();
         uncountable.setServiceName("internet");
