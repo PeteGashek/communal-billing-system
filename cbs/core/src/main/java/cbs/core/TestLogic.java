@@ -28,7 +28,7 @@ public class TestLogic {
         countable.setPayment(2121.033);
         //
         Bill bill = new Bill();
-        bill.setDate(new YearMonth(2013, 3));
+        bill.setDate(new YearMonth());
         List<Service> all = new ArrayList<Service>();
         all.add(countable);
         all.add(uncountable);
