@@ -8,11 +8,17 @@
 
     <parent>
         <groupId>org.room72.cbs</groupId>
-		<artifactId>cbs-root</artifactId>
+        <artifactId>cbs-root</artifactId>
         <version>0.0.1</version>
         <relativePath>..</relativePath>
     </parent>
     <dependencies>
+        <dependency>
+            <groupId>org.eclipse.persistence</groupId>
+            <artifactId>javax.persistence</artifactId>
+            <version>2.0.0</version>
+            <scope>compile</scope>
+        </dependency>
     </dependencies>
     <build>
         <plugins>
@@ -29,7 +35,7 @@
                             javax.jws,
                             javax.xml.bind.*
                         </Import-Package>
-                         <Export-Package>
+                        <Export-Package>
                             cbs.core
                         </Export-Package>
                     </instructions>
