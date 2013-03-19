@@ -11,7 +11,7 @@ public class Bills {
         return bills;
     }
 
-    @XmlElement
+    @XmlElement(name = "bill")
     public void setBills(List<Bill> bills) {
         this.bills = bills;
     }
