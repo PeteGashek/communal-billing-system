@@ -27,17 +27,8 @@ public class TestLogic {
         countable.setCounter(223.22);
         countable.setPayment(2121.033);
         //
-        Calendar cal1 = Calendar.getInstance();//
-        String year=Integer.valueOf(cal1.get(Calendar.YEAR)).toString();
-        String month= Integer.valueOf(cal1.get(Calendar.MONTH)).toString();
-        String curDate = year+' '+month;
-        //
         Bill bill = new Bill();
-<<<<<<< HEAD
         bill.setDate(new YearMonth(2013, 3));
-=======
-        bill.setDate(curDate);
->>>>>>> 654791b98866c92a9ee5a7e98d1b690db9dd9030
         List<Service> all = new ArrayList<Service>();
         all.add(countable);
         all.add(uncountable);
