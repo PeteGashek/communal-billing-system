@@ -25,7 +25,8 @@
                         </Require-Bundle>
                         <Import-Package>
                             javax.jws,
-                            javax.xml.bind.*
+                            javax.xml.bind.*,
+                            org.joda.time.*,
                         </Import-Package>
                         <Export-Package>
                             cbs.core
