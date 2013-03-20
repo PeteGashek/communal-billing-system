@@ -3,20 +3,19 @@ package cbs.core;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.xml.bind.annotation.XmlElement;
 
 public class Bills {
     private List<Bill> bills = new ArrayList<Bill>();
-    private Map<String, Class<? extends Service>> services = new HashMap<String, Class<? extends Service>>();
+    private HashMap<String, Class<? extends Service>> services = new HashMap<String, Class<? extends Service>>();
 
-    public Map<String, Class<? extends Service>> getServices() {
+    public HashMap<String, Class<? extends Service>> getServices() {
         return services;
     }
 
     @XmlElement
-    public void setServices(Map<String, Class<? extends Service>> services) {
+    public void setServices(HashMap<String, Class<? extends Service>> services) {
         this.services = services;
     }
 

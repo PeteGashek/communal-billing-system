@@ -26,6 +26,9 @@ public class TestLogic {
         for (Entry<String, Class<? extends Service>> entry : bills.getServices().entrySet()) {
             Service temp = (Service) entry.getValue().newInstance();
             temp.setServiceName(entry.getKey());
+            if (temp instanceof CountableService) {
+                ((CountableService) temp).setCounter(999);
+            }
             servicesList.add(temp);
         }
 

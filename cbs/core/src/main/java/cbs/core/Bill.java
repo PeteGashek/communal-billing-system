@@ -5,7 +5,6 @@ import java.util.List;
 
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlElements;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 import org.joda.time.YearMonth;
@@ -22,8 +21,7 @@ public class Bill {
         return services;
     }
 
-    @XmlElements({ @XmlElement(name = "uncountableService", type = Service.class),
-            @XmlElement(name = "countableService", type = CountableService.class) })
+    @XmlElement(name = "service")
     public void setServices(List<Service> services) {
         this.services = services;
     }
