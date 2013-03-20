@@ -17,8 +17,8 @@ public class Bill {
         return services;
     }
 
-    @XmlElements({ @XmlElement(name = "service", type = Service.class),
-            @XmlElement(name = "service", type = CountableService.class) })
+    @XmlElements({ @XmlElement(name = "uncountableService", type = Service.class),
+            @XmlElement(name = "countableService", type = CountableService.class) })
     public void setServices(List<Service> services) {
         this.services = services;
     }
