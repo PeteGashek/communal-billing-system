@@ -4,7 +4,7 @@ import javax.xml.bind.annotation.adapters.XmlAdapter;
 
 import org.joda.time.YearMonth;
 
-public class YearMontAdaptor extends XmlAdapter<String, YearMonth> {
+public class YearMonthAdapter extends XmlAdapter<String, YearMonth> {
 
     @Override
     public YearMonth unmarshal(String v) throws Exception {

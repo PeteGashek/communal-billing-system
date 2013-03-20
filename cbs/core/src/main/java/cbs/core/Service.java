@@ -2,7 +2,12 @@ package cbs.core;
 
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlSeeAlso;
 
+import org.eclipse.persistence.oxm.annotations.XmlClassExtractor;
+
+@XmlClassExtractor(ServiceExtractor.class)
+@XmlSeeAlso(CountableService.class)
 public class Service {
     private String serviceName;
     private double payment;
