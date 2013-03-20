@@ -1,5 +1,6 @@
 package cbs.core;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.xml.bind.annotation.XmlAttribute;
@@ -11,14 +12,18 @@ import org.joda.time.YearMonth;
 
 public class Bill {
     private YearMonth date;
-    private List<Service> services;
+    private List<Service> services = new ArrayList<Service>();
+
+    public boolean add(Service e) {
+        return services.add(e);
+    }
 
     public List<Service> getServices() {
         return services;
     }
 
-    @XmlElements({ @XmlElement(name = "service", type = Service.class),
-            @XmlElement(name = "service", type = CountableService.class) })
+    @XmlElements({ @XmlElement(name = "uncountableService", type = Service.class),
+            @XmlElement(name = "countableService", type = CountableService.class) })
     public void setServices(List<Service> services) {
         this.services = services;
     }
@@ -28,7 +33,7 @@ public class Bill {
     }
 
     @XmlAttribute
-    @XmlJavaTypeAdapter(YearMontAdaptor.class)
+    @XmlJavaTypeAdapter(YearMonthAdapter.class)
     public void setDate(YearMonth date) {
         this.date = date;
     }
