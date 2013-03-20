@@ -1,5 +1,6 @@
 package cbs.core;
 
+import java.io.File;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
@@ -7,7 +8,6 @@ import java.util.List;
 import javax.xml.bind.JAXB;
 
 import org.joda.time.YearMonth;
-
 
 public class TestLogic {
 
@@ -33,7 +33,10 @@ public class TestLogic {
         output.add(bill);
         allBills.setBills(output);
         //
-        JAXB.marshal(allBills, System.out);
-        
+        JAXB.marshal(allBills, new File("test.xml"));
+        Bills unmarshalTest = JAXB.unmarshal(new File("test.xml"), Bills.class);
+        JAXB.marshal(unmarshalTest, System.out);
+
+
     }
 }
