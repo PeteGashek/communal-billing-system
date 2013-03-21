@@ -1,4 +1,4 @@
-package cbs.core;
+package cbs.core.model;
 
 public class UncountableService extends Service {
 

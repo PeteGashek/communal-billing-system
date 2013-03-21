@@ -1,4 +1,4 @@
-package cbs.core;
+package cbs.core.model;
 
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;

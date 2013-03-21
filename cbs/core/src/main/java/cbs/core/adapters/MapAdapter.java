@@ -1,10 +1,12 @@
-package cbs.core;
+package cbs.core.adapters;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 
 import javax.xml.bind.annotation.adapters.XmlAdapter;
+
+import cbs.core.model.Service;
 
 public class MapAdapter extends XmlAdapter<MapElements[], Map<String, Class<? extends Service>>> {
 
