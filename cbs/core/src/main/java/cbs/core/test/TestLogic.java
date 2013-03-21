@@ -12,7 +12,10 @@ import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 
 import org.joda.time.YearMonth;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import cbs.core.config.Config;
 import cbs.core.model.Bill;
 import cbs.core.model.Bills;
 import cbs.core.model.CountableService;
@@ -47,41 +50,44 @@ public class TestLogic {
         bill.setServices(servicesList);
 
         bills.add(bill);
-        try {
-
-            File file = new File("test.xml");
-            JAXBContext jaxbContext = JAXBContext.newInstance(Bills.class);
-            Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
-
-            jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-            jaxbMarshaller.setProperty(Marshaller.JAXB_SCHEMA_LOCATION, "");
-
-            jaxbMarshaller.marshal(bills, file);
-            jaxbMarshaller.marshal(bills, System.out);
-
-        } catch (JAXBException e) {
-            e.printStackTrace();
-        }
-
-        System.out.println("============================");
-
-        try {
-
-            File file = new File("test.xml");
-            JAXBContext jaxbContext = JAXBContext.newInstance(Bills.class);
-            Unmarshaller jaxbUnMarshaller = jaxbContext.createUnmarshaller();
-            Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
-
-            Bills unmarshalTest = (Bills) jaxbUnMarshaller.unmarshal(file);
-
-            jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-            jaxbMarshaller.setProperty(Marshaller.JAXB_SCHEMA_LOCATION, "");
-
-            jaxbMarshaller.marshal(unmarshalTest, System.out);
-
-        } catch (JAXBException e) {
-            e.printStackTrace();
-        }
+        ApplicationContext acx = new ClassPathXmlApplicationContext("META-INF/spring/context.xml");
+        Config conf = (Config)acx.getBean("config");
+        System.out.println(conf.getBillsPath());
+//        try {
+//
+//            File file = new File("test.xml");
+//            JAXBContext jaxbContext = JAXBContext.newInstance(Bills.class);
+//            Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
+//
+//            jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+//            jaxbMarshaller.setProperty(Marshaller.JAXB_SCHEMA_LOCATION, "");
+//
+//            jaxbMarshaller.marshal(bills, file);
+//            jaxbMarshaller.marshal(bills, System.out);
+//
+//        } catch (JAXBException e) {
+//            e.printStackTrace();
+//        }
+//
+//        System.out.println("============================");
+//
+//        try {
+//
+//            File file = new File("test.xml");
+//            JAXBContext jaxbContext = JAXBContext.newInstance(Bills.class);
+//            Unmarshaller jaxbUnMarshaller = jaxbContext.createUnmarshaller();
+//            Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
+//
+//            Bills unmarshalTest = (Bills) jaxbUnMarshaller.unmarshal(file);
+//
+//            jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+//            jaxbMarshaller.setProperty(Marshaller.JAXB_SCHEMA_LOCATION, "");
+//
+//            jaxbMarshaller.marshal(unmarshalTest, System.out);
+//
+//        } catch (JAXBException e) {
+//            e.printStackTrace();
+//        }
 
     }
 }
