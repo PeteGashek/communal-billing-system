@@ -1,4 +1,4 @@
-package cbs.core;
+package cbs.core.model;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -8,6 +8,8 @@ import java.util.Map;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+
+import cbs.core.adapters.MapAdapter;
 
 @XmlRootElement
 public class Bills {

@@ -1,4 +1,4 @@
-package cbs.core;
+package cbs.core.test;
 
 import java.io.File;
 import java.text.ParseException;
@@ -12,6 +12,12 @@ import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 
 import org.joda.time.YearMonth;
+
+import cbs.core.model.Bill;
+import cbs.core.model.Bills;
+import cbs.core.model.CountableService;
+import cbs.core.model.Service;
+import cbs.core.model.UncountableService;
 
 public class TestLogic {
 

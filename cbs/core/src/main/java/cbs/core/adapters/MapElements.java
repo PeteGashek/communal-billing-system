@@ -1,6 +1,8 @@
-package cbs.core;
+package cbs.core.adapters;
 
 import javax.xml.bind.annotation.XmlElement;
+
+import cbs.core.model.Service;
 
 class MapElements {
     @XmlElement
