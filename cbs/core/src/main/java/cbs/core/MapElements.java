@@ -6,12 +6,12 @@ class MapElements {
     @XmlElement
     public String key;
     @XmlElement
-    public Class value;
+    public Class<? extends Service> value;
 
-    private MapElements() {
+    public MapElements() {
     } // Required by JAXB
 
-    public MapElements(String key, Class value) {
+    public MapElements(String key, Class<? extends Service> value) {
         this.key = key;
         this.value = value;
     }

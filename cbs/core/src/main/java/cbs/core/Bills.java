@@ -6,8 +6,10 @@ import java.util.List;
 import java.util.Map;
 
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
+@XmlRootElement
 public class Bills {
     private List<Bill> bills = new ArrayList<Bill>();
     private Map<String, Class<? extends Service>> services = new HashMap<String, Class<? extends Service>>();

@@ -6,7 +6,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map.Entry;
 
-import javax.xml.bind.JAXB;
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.Marshaller;
+import javax.xml.bind.Unmarshaller;
 
 import org.joda.time.YearMonth;
 
@@ -19,11 +22,12 @@ public class TestLogic {
         bills.put("electricity", CountableService.class);
         bills.put("hotWater", CountableService.class);
         bills.put("coldWater", CountableService.class);
-        bills.put("kvartplata", Service.class);
-        bills.put("internet", Service.class);
+        bills.put("kvartplata", UncountableService.class);
+        bills.put("internet", UncountableService.class);
 
         List<Service> servicesList = new ArrayList<Service>();
-        for (Entry<String, Class<? extends Service>> entry : bills.getServices().entrySet()) {
+        for (Entry<String, Class<? extends Service>> entry : bills
+                .getServices().entrySet()) {
             Service temp = (Service) entry.getValue().newInstance();
             temp.setServiceName(entry.getKey());
             if (temp instanceof CountableService) {
@@ -37,13 +41,41 @@ public class TestLogic {
         bill.setServices(servicesList);
 
         bills.add(bill);
-        JAXB.marshal(bills, System.out);
-        JAXB.marshal(bills, new File("test.xml"));
+        try {
+
+            File file = new File("test.xml");
+            JAXBContext jaxbContext = JAXBContext.newInstance(Bills.class);
+            Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
+
+            jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+            jaxbMarshaller.setProperty(Marshaller.JAXB_SCHEMA_LOCATION, "");
+
+            jaxbMarshaller.marshal(bills, file);
+            jaxbMarshaller.marshal(bills, System.out);
+
+        } catch (JAXBException e) {
+            e.printStackTrace();
+        }
 
         System.out.println("============================");
 
-        Bills unmarshalTest = JAXB.unmarshal(new File("test.xml"), Bills.class);
-        JAXB.marshal(unmarshalTest, System.out);
+        try {
+
+            File file = new File("test.xml");
+            JAXBContext jaxbContext = JAXBContext.newInstance(Bills.class);
+            Unmarshaller jaxbUnMarshaller = jaxbContext.createUnmarshaller();
+            Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
+
+            Bills unmarshalTest = (Bills) jaxbUnMarshaller.unmarshal(file);
+
+            jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+            jaxbMarshaller.setProperty(Marshaller.JAXB_SCHEMA_LOCATION, "");
+
+            jaxbMarshaller.marshal(unmarshalTest, System.out);
+
+        } catch (JAXBException e) {
+            e.printStackTrace();
+        }
 
     }
 }
