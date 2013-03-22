@@ -43,17 +43,15 @@
                 <configuration>
                     <instructions>
                         <Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
-                        <Require-Bundle>
-                        </Require-Bundle>
                         <Import-Package>
-                            cbs.dao.*,
-                            cbs.core.*,
+                            cbs.dao,
+                            cbs.core.model,
                             javax.jws,
                             javax.xml.bind,
                             org.apache.felix.service.command,
                             org.apache.felix.gogo.commands,
                             org.apache.karaf.shell.console,
-                            *
+                            org.osgi.service.blueprint
                         </Import-Package>
                     </instructions>
                 </configuration>

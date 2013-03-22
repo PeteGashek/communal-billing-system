@@ -29,7 +29,8 @@
                             org.joda.time.*,
                         </Import-Package>
                         <Export-Package>
-                            cbs.core.*
+                            cbs.core.model,
+                            cbs.core.adapters
                         </Export-Package>
                     </instructions>
                 </configuration>

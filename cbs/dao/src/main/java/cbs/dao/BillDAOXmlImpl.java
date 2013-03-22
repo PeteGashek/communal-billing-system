@@ -31,9 +31,9 @@ public class BillDAOXmlImpl implements BillDAO {
 
     BillDAOXmlImpl(String path, Bills bills) {
         
-        serviceStructure = new ServiceStructure();
-        serviceStructure.put("aaa", CountableService.class);
-        serviceStructure.put("bbb", UncountableService.class);
+//        serviceStructure = new ServiceStructure();
+//        serviceStructure.put("aaa", CountableService.class);
+//        serviceStructure.put("bbb", UncountableService.class);
         
         this.bills = bills;
         property = new Properties();
