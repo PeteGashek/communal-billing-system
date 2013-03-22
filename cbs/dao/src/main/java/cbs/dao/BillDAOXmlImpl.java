@@ -27,9 +27,9 @@ public class BillDAOXmlImpl implements BillDAO {
     private Properties property;
     private String billsPath = "";
 
-    BillDAOXmlImpl(String path) {
+    BillDAOXmlImpl(String path, Bills bills) {
+        this.bills = bills;
         property = new Properties();
-        bills = new Bills();
         try {
             property.load(new FileInputStream(path));
         } catch (IOException ex) {
@@ -40,7 +40,7 @@ public class BillDAOXmlImpl implements BillDAO {
         File file = new File(billsPath);
         file.mkdirs();
 
-        marshal();
+//        marshal();
     }
 
     public Properties getProperty() {
@@ -63,18 +63,18 @@ public class BillDAOXmlImpl implements BillDAO {
         this.serviceStructure = serviceStructure;
     }
 
-    private void unmarshal() {
-        try {
-            File file = new File(billsPath + "test.xml");
-            JAXBContext jaxbContext = JAXBContext.newInstance(Bills.class);
-            Unmarshaller jaxbUnMarshaller = jaxbContext.createUnmarshaller();
-            bills = (Bills) jaxbUnMarshaller.unmarshal(file);
-        } catch (JAXBException e) {
-            e.printStackTrace();
-        }
-    }
+//    private void unmarshal() {
+//        try {
+//            File file = new File(billsPath + "test.xml");
+//            JAXBContext jaxbContext = JAXBContext.newInstance(Bills.class);
+//            Unmarshaller jaxbUnMarshaller = jaxbContext.createUnmarshaller();
+//            bills = (Bills) jaxbUnMarshaller.unmarshal(file);
+//        } catch (JAXBException e) {
+//            e.printStackTrace();
+//        }
+//    }
 
-    private void marshal() {
+    public void marshal() {
         try {
             File file = new File(billsPath + "test.xml");
             JAXBContext jaxbContext = JAXBContext.newInstance(bills.getClass());
