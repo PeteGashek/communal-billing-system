@@ -12,10 +12,10 @@ public class TestLogic {
         
         
         
-        ApplicationContext acx = new ClassPathXmlApplicationContext("META-INF/spring/context.xml");
-        BillDAOXmlImpl impl = (BillDAOXmlImpl) acx.getBean("billdaoxml");
-        impl.createBill();
-        impl.createBill(new YearMonth(2015, 6));
+//        ApplicationContext acx = new ClassPathXmlApplicationContext("META-INF/spring/context.xml");
+//        BillDAOXmlImpl impl = (BillDAOXmlImpl) acx.getBean("billdaoxml");
+//        impl.createBill();
+//        impl.createBill(new YearMonth(2015, 6));
         
         
         

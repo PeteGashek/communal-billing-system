@@ -32,6 +32,11 @@
             <version>0.0.1</version>
             <type>bundle</type>
         </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -43,11 +48,16 @@
                 <configuration>
                     <instructions>
                         <Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
+                        <Require-Bundle>
+                            org.springframework.beans,
+                            org.springframework.context
+                        </Require-Bundle>
                         <Import-Package>
                             cbs.dao,
                             cbs.core.model,
                             javax.jws,
                             javax.xml.bind,
+                            org.springframework.context.support,
                             org.apache.felix.service.command,
                             org.apache.felix.gogo.commands,
                             org.apache.karaf.shell.console,

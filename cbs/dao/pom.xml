@@ -23,29 +23,25 @@
             <version>3.2-b06</version>
         </dependency>
         <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-core</artifactId>
-            <version>2.0.8</version>
-        </dependency>
-        <dependency>
             <groupId>commons-logging</groupId>
             <artifactId>commons-logging</artifactId>
             <version>1.1</version>
         </dependency>
         <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-beans</artifactId>
-            <version>2.0.8</version>
+            <groupId>org.room72.cbs</groupId>
+            <artifactId>core</artifactId>
+            <version>0.0.1</version>
+            <type>bundle</type>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
-            <version>2.0.8</version>
+            <version>${spring.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.room72.cbs</groupId>
-            <artifactId>core</artifactId>
-            <version>0.0.1</version>
+            <groupId>org.springframework.osgi</groupId>
+            <artifactId>spring-osgi-core</artifactId>
+            <version>1.2.1</version>
             <type>bundle</type>
         </dependency>
     </dependencies>
@@ -59,9 +55,13 @@
                     <instructions>
                         <Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
                         <Spring-Context>*</Spring-Context>
+                        <Require-Bundle>
+                            org.springframework.beans,
+                            org.springframework.context
+                        </Require-Bundle>
                         <Import-Package>
                             cbs.core.model,
-                            org.springframework.*,
+                            org.springframework.context.support,
                             javax.jws,
                             javax.xml.bind.*,
                             org.joda.time.*
