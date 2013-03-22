@@ -19,3 +19,6 @@ in container execute:
         cbs:newyear arg
 
 Where arg is number of year (for example 2013). 
+
+!!!!IMPORTANT
+deploy to karaf joda-time-2.2.jar

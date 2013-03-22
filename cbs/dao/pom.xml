@@ -24,18 +24,28 @@
                         <Require-Bundle>
                         </Require-Bundle>
                         <Import-Package>
+                            cbs.core.*,
                             org.springframework.*,
                             javax.jws,
                             javax.xml.bind.*,
                             org.joda.time.*,
                         </Import-Package>
                         <Export-Package>
-                            cbs.core.*
+                            cbs.dao.*
                         </Export-Package>
                     </instructions>
                 </configuration>
             </plugin>
         </plugins>
+        <resources>
+            <resource>
+                <directory>${project.basedir}/src/main/resources</directory>
+                <filtering>true</filtering>
+                <includes>
+                    <include>**/config.properties</include>
+                </includes>
+            </resource>
+        </resources>
     </build>
     <dependencies>
         <dependency>

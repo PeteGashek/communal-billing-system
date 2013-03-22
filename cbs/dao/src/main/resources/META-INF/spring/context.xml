@@ -1,12 +1,15 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jaxws="http://cxf.apache.org/jaxws"
+    xmlns:osgi="http://www.springframework.org/schema/osgi"
     xsi:schemaLocation="
-http://www.springframework.org/schema/beans
-http://www.springframework.org/schema/beans/spring-beans.xsd">
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/osgi http://www.springframework.org/schema/osgi/spring-osgi.xsd
+		http://cxf.apache.org/core http://cxf.apache.org/schemas/core.xsd
+		http://cxf.apache.org/jaxws http://cxf.apache.org/schemas/jaxws.xsd
+	">
 
 
-    <bean id="CountableService" class="java.lang.Class"
+    <!-- >bean id="CountableService" class="java.lang.Class"
         factory-method="forName">
         <constructor-arg value="cbs.core.model.CountableService" />
     </bean>
@@ -14,22 +17,24 @@ http://www.springframework.org/schema/beans/spring-beans.xsd">
     <bean id="UncountableService" class="java.lang.Class"
         factory-method="forName">
         <constructor-arg value="cbs.core.model.UncountableService" />
-    </bean>
+    </bean -->
 
-    <bean id="servicestructure" class="cbs.core.model.ServiceStructure">
+    <!-- bean id="servicestructure" class="cbs.core.model.ServiceStructure">
         <property name="services">
             <map>
                 <entry key="electricity" value-ref="CountableService" />
                 <entry key="rent" value-ref="UncountableService" />
             </map>
         </property>
-    </bean>
+    </bean -->
     
     <bean id="bills" class="cbs.core.model.Bills" />
 
     <bean id="billdaoxml" class="cbs.dao.BillDAOXmlImpl">
         <constructor-arg value="config.properties" />
         <constructor-arg ref="bills" />
-        <property name="serviceStructure" ref="servicestructure" />
+        <!-- property name="serviceStructure" ref="servicestructure" / -->
     </bean>
+    
+    <osgi:service ref="billdaoxml" interface="cbs.dao.BillDAO" />
 </beans>

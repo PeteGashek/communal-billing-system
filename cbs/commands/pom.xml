@@ -8,7 +8,7 @@
 
     <parent>
         <groupId>org.room72.cbs</groupId>
-		<artifactId>cbs-root</artifactId>
+        <artifactId>cbs-root</artifactId>
         <version>0.0.1</version>
         <relativePath>..</relativePath>
     </parent>
@@ -26,6 +26,12 @@
             <version>0.0.1</version>
             <type>bundle</type>
         </dependency>
+        <dependency>
+            <groupId>org.room72.cbs</groupId>
+            <artifactId>dao</artifactId>
+            <version>0.0.1</version>
+            <type>bundle</type>
+        </dependency>
     </dependencies>
 
     <build>
@@ -38,11 +44,10 @@
                     <instructions>
                         <Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
                         <Require-Bundle>
-                        
                         </Require-Bundle>
                         <Import-Package>
-                            
-                            cbs.core,
+                            cbs.dao.*,
+                            cbs.core.*,
                             javax.jws,
                             javax.xml.bind,
                             org.apache.felix.service.command,

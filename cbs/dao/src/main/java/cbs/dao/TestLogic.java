@@ -2,6 +2,7 @@ package cbs.dao;
 
 import java.text.ParseException;
 
+import org.joda.time.YearMonth;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -14,6 +15,7 @@ public class TestLogic {
         ApplicationContext acx = new ClassPathXmlApplicationContext("META-INF/spring/context.xml");
         BillDAOXmlImpl impl = (BillDAOXmlImpl) acx.getBean("billdaoxml");
         impl.createBill();
+        impl.createBill(new YearMonth(2015, 6));
         
         
         

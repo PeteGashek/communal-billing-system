@@ -16,8 +16,10 @@ import org.joda.time.YearMonth;
 
 import cbs.core.model.Bill;
 import cbs.core.model.Bills;
+import cbs.core.model.CountableService;
 import cbs.core.model.Service;
 import cbs.core.model.ServiceStructure;
+import cbs.core.model.UncountableService;
 
 public class BillDAOXmlImpl implements BillDAO {
 
@@ -28,6 +30,11 @@ public class BillDAOXmlImpl implements BillDAO {
     private String billsPath = "";
 
     BillDAOXmlImpl(String path, Bills bills) {
+        
+        serviceStructure = new ServiceStructure();
+        serviceStructure.put("aaa", CountableService.class);
+        serviceStructure.put("bbb", UncountableService.class);
+        
         this.bills = bills;
         property = new Properties();
         try {
@@ -93,6 +100,11 @@ public class BillDAOXmlImpl implements BillDAO {
 
     @Override
     public void createBill() {
+        createBill(new YearMonth());
+    }
+    
+    @Override
+    public void createBill(YearMonth yearMonth) {
         Bill bill = new Bill();
         for (Entry<String, Class<? extends Service>> entry : serviceStructure
                 .getServices().entrySet()) {
@@ -105,9 +117,10 @@ public class BillDAOXmlImpl implements BillDAO {
                 e.printStackTrace();
             }
         }
-        bill.setDate(new YearMonth());
+        bill.setDate(yearMonth);
         bills.add(bill);
         marshal();
+        
     }
 
     @Override
@@ -133,5 +146,7 @@ public class BillDAOXmlImpl implements BillDAO {
         // TODO Auto-generated method stub
         return null;
     }
+
+
 
 }
