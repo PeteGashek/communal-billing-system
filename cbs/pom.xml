@@ -11,6 +11,7 @@
         <module>commands</module>
         <module>features</module>
 		<module>core</module>
+		<module>dao</module>
     </modules>
     <build>
         <defaultGoal>install</defaultGoal>
