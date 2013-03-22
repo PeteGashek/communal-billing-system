@@ -24,6 +24,7 @@
                         <Require-Bundle>
                         </Require-Bundle>
                         <Import-Package>
+                            org.springframework.*,
                             javax.jws,
                             javax.xml.bind.*,
                             org.joda.time.*,
