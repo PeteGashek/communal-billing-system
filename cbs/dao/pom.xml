@@ -58,7 +58,7 @@
                             org.springframework.context.support,
                             javax.jws,
                             javax.xml.bind.*,
-                            org.joda.time.*
+                            org.joda.time.*;version="2.2.0"
                         </Import-Package>
                         <Export-Package>
                             cbs.dao
@@ -67,7 +67,7 @@
                 </configuration>
             </plugin>
         </plugins>
-        <resources>
+        <!-- resources>
             <resource>
                 <directory>${project.basedir}/src/main/resources</directory>
                 <filtering>true</filtering>
@@ -75,6 +75,6 @@
                     <include>**/config.properties</include>
                 </includes>
             </resource>
-        </resources>
+        </resources -->
     </build>
 </project>

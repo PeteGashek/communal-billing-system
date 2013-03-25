@@ -26,37 +26,40 @@ public class BillDAOXmlImpl implements BillDAO {
     private Bills bills;
     private ServiceStructure serviceStructure;
 
-    private Properties property;
+//    private Properties property;
     private String billsPath = "";
 
-    BillDAOXmlImpl(String path, Bills bills) {
-        
-//        serviceStructure = new ServiceStructure();
-//        serviceStructure.put("aaa", CountableService.class);
-//        serviceStructure.put("bbb", UncountableService.class);
-        
-        this.bills = bills;
-        property = new Properties();
-        try {
-            property.load(new FileInputStream(path));
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
-        billsPath = property.getProperty("billsPath");
+    BillDAOXmlImpl() {
 
+        // serviceStructure = new ServiceStructure();
+        // serviceStructure.put("aaa", CountableService.class);
+        // serviceStructure.put("bbb", UncountableService.class);
+
+        // this.bills = bills;
+        this.bills = new Bills();
+//        property = new Properties();
         File file = new File(billsPath);
         file.mkdirs();
+//        try {
+//            property.load(new FileInputStream("./cbs/bills/"));
+//        } catch (IOException ex) {
+//            ex.printStackTrace();
+//        }
+        billsPath = "./cbs/bills/";
+        serviceStructure = new ServiceStructure();
+        serviceStructure.put("aaa", CountableService.class);
+        serviceStructure.put("bbb", UncountableService.class);
 
-//        marshal();
+        // marshal();
     }
 
-    public Properties getProperty() {
-        return property;
-    }
-
-    public void setProperty(Properties property) {
-        this.property = property;
-    }
+//    public Properties getProperty() {
+//        return property;
+//    }
+//
+//    public void setProperty(Properties property) {
+//        this.property = property;
+//    }
 
     public String getBillsPath() {
         return billsPath;
@@ -70,16 +73,16 @@ public class BillDAOXmlImpl implements BillDAO {
         this.serviceStructure = serviceStructure;
     }
 
-//    private void unmarshal() {
-//        try {
-//            File file = new File(billsPath + "test.xml");
-//            JAXBContext jaxbContext = JAXBContext.newInstance(Bills.class);
-//            Unmarshaller jaxbUnMarshaller = jaxbContext.createUnmarshaller();
-//            bills = (Bills) jaxbUnMarshaller.unmarshal(file);
-//        } catch (JAXBException e) {
-//            e.printStackTrace();
-//        }
-//    }
+    // private void unmarshal() {
+    // try {
+    // File file = new File(billsPath + "test.xml");
+    // JAXBContext jaxbContext = JAXBContext.newInstance(Bills.class);
+    // Unmarshaller jaxbUnMarshaller = jaxbContext.createUnmarshaller();
+    // bills = (Bills) jaxbUnMarshaller.unmarshal(file);
+    // } catch (JAXBException e) {
+    // e.printStackTrace();
+    // }
+    // }
 
     public void marshal() {
         try {
@@ -102,7 +105,7 @@ public class BillDAOXmlImpl implements BillDAO {
     public void createBill() {
         createBill(new YearMonth());
     }
-    
+
     @Override
     public void createBill(YearMonth yearMonth) {
         Bill bill = new Bill();
@@ -120,7 +123,7 @@ public class BillDAOXmlImpl implements BillDAO {
         bill.setDate(yearMonth);
         bills.add(bill);
         marshal();
-        
+
     }
 
     @Override
@@ -146,7 +149,5 @@ public class BillDAOXmlImpl implements BillDAO {
         // TODO Auto-generated method stub
         return null;
     }
-
-
 
 }
