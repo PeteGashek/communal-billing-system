@@ -3,3 +3,4 @@
 .classpath
 target
 /cbs/core/test.xml
+bin/
