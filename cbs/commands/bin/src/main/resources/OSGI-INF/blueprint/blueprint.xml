@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0">
+    <reference id="billdaoxml" interface="cbs.dao.BillDAO" />
+    <command-bundle xmlns="http://karaf.apache.org/xmlns/shell/v1.0.0">
+        <command name="cbs/createbill">
+            <action class="cbs.commands.CreateBill">
+                <property name="billdao" ref="billdaoxml" />
+            </action>
+        </command>
+    </command-bundle>
+</blueprint>
