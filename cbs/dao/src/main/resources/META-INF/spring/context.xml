@@ -6,14 +6,7 @@
 		http://www.springframework.org/schema/osgi http://www.springframework.org/schema/osgi/spring-osgi.xsd
 	">
 
-    <bean id="servicestructure" class="cbs.core.model.ServiceStructure">
-        <property name="services">
-            <map>
-                <entry key="electricity" value="cbs.core.model.CountableService" />
-                <entry key="rent" value="cbs.core.model.UncountableService" />
-            </map>
-        </property>
-    </bean>
+    <bean id="servicestructure" class="cbs.core.model.ServiceStructure" />
 
     <bean id="billdaoxml" class="cbs.dao.BillDAOXmlImpl">
         <property name="serviceStructure" ref="servicestructure" />
