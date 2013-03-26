@@ -16,9 +16,10 @@ in container execute:
 
 
 
-        cbs:newyear arg
+        cbs:createbill
 
-Where arg is number of year (for example 2013). 
+//Where arg is number of year (for example 2013). 
+Arg is yet empty . Implementation on the way.
 
 !!!!IMPORTANT
 deploy to karaf joda-time-2.2.jar
