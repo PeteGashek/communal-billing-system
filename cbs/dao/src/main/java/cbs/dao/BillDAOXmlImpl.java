@@ -1,8 +1,11 @@
 package cbs.dao;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Map.Entry;
+import java.util.Properties;
 import java.util.Set;
 
 import javax.xml.bind.JAXBContext;
@@ -21,17 +24,23 @@ public class BillDAOXmlImpl implements BillDAO {
 
     private Bills bills;
     private ServiceStructure serviceStructure;
-    private String billsPath = "./cbs/bills/";
+    // private String billsPath = "./cbs/bills/";
+    private Properties properties;
 
     BillDAOXmlImpl() {
         this.bills = new Bills();
-        File file = new File(billsPath);
+        properties = new Properties();
+        try {
+            properties
+                    .load(new FileInputStream("etc/org.room72.cbs.paths.cfg"));
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        File file = new File(properties.getProperty("billsPath"));
         file.mkdirs();
         unmarshal();
-    }
-
-    public String getBillsPath() {
-        return billsPath;
     }
 
     public ServiceStructure getServiceStructure() {
@@ -44,13 +53,16 @@ public class BillDAOXmlImpl implements BillDAO {
 
     private void unmarshal() {
         try {
-            File file = new File(billsPath + "test.xml");
+            File file = new File(properties.getProperty("billsPath")
+                    + properties.getProperty("billsName"));
             try {
                 if (file.createNewFile()) {
                     bills = new Bills();
                 } else {
-                    JAXBContext jaxbContext = JAXBContext.newInstance(Bills.class);
-                    Unmarshaller jaxbUnMarshaller = jaxbContext.createUnmarshaller();
+                    JAXBContext jaxbContext = JAXBContext
+                            .newInstance(Bills.class);
+                    Unmarshaller jaxbUnMarshaller = jaxbContext
+                            .createUnmarshaller();
                     bills = (Bills) jaxbUnMarshaller.unmarshal(file);
                 }
             } catch (IOException e) {
@@ -66,7 +78,8 @@ public class BillDAOXmlImpl implements BillDAO {
 
     public void marshal() {
         try {
-            File file = new File(billsPath + "test.xml");
+            File file = new File(properties.getProperty("billsPath")
+                    + properties.getProperty("billsName"));
             JAXBContext jaxbContext = JAXBContext.newInstance(bills.getClass());
             Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
 
@@ -89,7 +102,8 @@ public class BillDAOXmlImpl implements BillDAO {
     @Override
     public void createBill(YearMonth yearMonth) {
         Bill bill = new Bill();
-        for (Entry<String, Class<? extends Service>> entry : serviceStructure.getServices().entrySet()) {
+        for (Entry<String, Class<? extends Service>> entry : serviceStructure
+                .getServices().entrySet()) {
             Service temp;
             try {
                 temp = (Service) entry.getValue().newInstance();
