@@ -7,5 +7,10 @@
                 <property name="billdao" ref="billdaoxml" />
             </action>
         </command>
+        <command name="cbs/deletebill">
+            <action class="cbs.commands.DeleteBill">
+                <property name="billdao" ref="billdaoxml" />
+            </action>
+        </command>
     </command-bundle>
 </blueprint>

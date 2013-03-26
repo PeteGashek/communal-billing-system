@@ -135,8 +135,12 @@ public class BillDAOXmlImpl implements BillDAO {
 
     @Override
     public void deleteBill(YearMonth yearMonth) {
-        // TODO Auto-generated method stub
-
+        Set<Bill> temp = bills.getBills();
+        Bill tempBill = new Bill();
+        tempBill.setDate(yearMonth);
+        temp.remove(tempBill);
+        bills.setBills(temp);
+        marshal();
     }
 
     @Override
