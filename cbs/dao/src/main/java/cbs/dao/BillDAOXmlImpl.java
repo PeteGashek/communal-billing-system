@@ -37,7 +37,7 @@ public class BillDAOXmlImpl implements BillDAO {
 
         // this.bills = bills;
         this.bills = new Bills();
-//        property = new Properties();
+        billsPath = "./cbs/bills/";
         File file = new File(billsPath);
         file.mkdirs();
 //        try {
@@ -45,10 +45,9 @@ public class BillDAOXmlImpl implements BillDAO {
 //        } catch (IOException ex) {
 //            ex.printStackTrace();
 //        }
-        billsPath = "./cbs/bills/";
         serviceStructure = new ServiceStructure();
-        serviceStructure.put("aaa", CountableService.class);
-        serviceStructure.put("bbb", UncountableService.class);
+//        serviceStructure.put("aaa", CountableService.class);
+//        serviceStructure.put("bbb", UncountableService.class);
 
         // marshal();
     }

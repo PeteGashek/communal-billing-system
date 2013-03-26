@@ -49,12 +49,10 @@
                     <instructions>
                         <Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
                         <Spring-Context>*</Spring-Context>
-                        <Require-Bundle>
-                            org.springframework.beans,
-                            org.springframework.context
-                        </Require-Bundle>
                         <Import-Package>
                             cbs.core.model,
+                            org.springframework.beans,
+                            org.springframework.context,
                             org.springframework.context.support,
                             javax.jws,
                             javax.xml.bind.*,
