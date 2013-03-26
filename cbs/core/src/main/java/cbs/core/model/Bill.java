@@ -1,7 +1,7 @@
 package cbs.core.model;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
@@ -12,19 +12,20 @@ import org.joda.time.YearMonth;
 import cbs.core.adapters.YearMonthAdapter;
 
 public class Bill {
+
     private YearMonth date;
-    private List<Service> services = new ArrayList<Service>();
+    private Set<Service> services = new HashSet<Service>();
 
     public boolean add(Service e) {
         return services.add(e);
     }
 
-    public List<Service> getServices() {
+    public Set<Service> getServices() {
         return services;
     }
 
     @XmlElement(name = "service")
-    public void setServices(List<Service> services) {
+    public void setServices(Set<Service> services) {
         this.services = services;
     }
 
@@ -38,4 +39,8 @@ public class Bill {
         this.date = date;
     }
 
+    @Override
+    public int hashCode() {
+        return date.toString().hashCode();
+    }
 }

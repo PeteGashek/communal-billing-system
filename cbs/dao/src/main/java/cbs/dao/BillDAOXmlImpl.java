@@ -1,8 +1,9 @@
 package cbs.dao;
 
 import java.io.File;
-import java.util.List;
+import java.io.IOException;
 import java.util.Map.Entry;
+import java.util.Set;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
@@ -44,9 +45,20 @@ public class BillDAOXmlImpl implements BillDAO {
     private void unmarshal() {
         try {
             File file = new File(billsPath + "test.xml");
-            JAXBContext jaxbContext = JAXBContext.newInstance(Bills.class);
-            Unmarshaller jaxbUnMarshaller = jaxbContext.createUnmarshaller();
-            bills = (Bills) jaxbUnMarshaller.unmarshal(file);
+            try {
+                if (file.createNewFile()) {
+                    bills = new Bills();
+                } else {
+                    JAXBContext jaxbContext = JAXBContext.newInstance(Bills.class);
+                    Unmarshaller jaxbUnMarshaller = jaxbContext.createUnmarshaller();
+                    bills = (Bills) jaxbUnMarshaller.unmarshal(file);
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            // JAXBContext jaxbContext = JAXBContext.newInstance(Bills.class);
+            // Unmarshaller jaxbUnMarshaller = jaxbContext.createUnmarshaller();
+            // bills = (Bills) jaxbUnMarshaller.unmarshal(file);
         } catch (JAXBException e) {
             e.printStackTrace();
         }
@@ -77,8 +89,7 @@ public class BillDAOXmlImpl implements BillDAO {
     @Override
     public void createBill(YearMonth yearMonth) {
         Bill bill = new Bill();
-        for (Entry<String, Class<? extends Service>> entry : serviceStructure
-                .getServices().entrySet()) {
+        for (Entry<String, Class<? extends Service>> entry : serviceStructure.getServices().entrySet()) {
             Service temp;
             try {
                 temp = (Service) entry.getValue().newInstance();
@@ -89,9 +100,11 @@ public class BillDAOXmlImpl implements BillDAO {
             }
         }
         bill.setDate(yearMonth);
-        bills.add(bill);
-        marshal();
+        if (!bills.add(bill)) {
+            System.out.println("Bill already exists!");
+        }
 
+        marshal();
     }
 
     @Override
@@ -113,7 +126,7 @@ public class BillDAOXmlImpl implements BillDAO {
     }
 
     @Override
-    public List<Bill> listBills() {
+    public Set<Bill> listBills() {
         // TODO Auto-generated method stub
         return null;
     }

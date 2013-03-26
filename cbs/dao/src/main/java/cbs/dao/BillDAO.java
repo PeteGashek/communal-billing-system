@@ -1,6 +1,6 @@
 package cbs.dao;
 
-import java.util.List;
+import java.util.Set;
 
 import org.joda.time.YearMonth;
 
@@ -12,5 +12,5 @@ public interface BillDAO {
     Bill readBill(YearMonth yearMonth);
     void updateBill(Bill bill);
     void deleteBill(YearMonth yearMonth);
-    List<Bill> listBills();
+    Set<Bill> listBills();
 }
