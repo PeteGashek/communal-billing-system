@@ -43,21 +43,21 @@
                 <configuration>
                     <instructions>
                         <Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
-                        <Require-Bundle>
-                            org.springframework.beans,
-                            org.springframework.context
-                        </Require-Bundle>
                         <Import-Package>
                             cbs.dao,
                             cbs.core.model,
                             javax.jws,
                             javax.xml.bind,
                             org.springframework.context.support,
+                            org.springframework.beans,
+                            org.springframework.context,
                             org.apache.felix.service.command,
                             org.apache.felix.gogo.commands,
                             org.apache.karaf.shell.console,
-                            org.osgi.service.blueprint
+                            org.osgi.service.blueprint,
+                             org.joda.time.*;version="2.2.0"
                         </Import-Package>
+                        
                     </instructions>
                 </configuration>
             </plugin>
