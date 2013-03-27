@@ -95,11 +95,6 @@ public class BillDAOXmlImpl implements BillDAO {
     }
 
     @Override
-    public void createBill() {
-        createBill(new YearMonth());
-    }
-
-    @Override
     public void createBill(YearMonth yearMonth) {
         Bill bill = new Bill();
         for (Entry<String, Class<? extends Service>> entry : serviceStructure

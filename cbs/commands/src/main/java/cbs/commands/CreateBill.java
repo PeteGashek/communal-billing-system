@@ -22,7 +22,7 @@ public class CreateBill extends OsgiCommandSupport {
         } else if (((month == null) && (year != null)) || ((month != null) && (year == null))) {
             System.out.println("Invalid arguments ! Retype!");
         } else {
-            billdao.createBill();
+            billdao.createBill(new YearMonth());
         }
         return null;
     }
