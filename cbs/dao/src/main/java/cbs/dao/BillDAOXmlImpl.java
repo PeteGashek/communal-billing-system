@@ -24,7 +24,6 @@ public class BillDAOXmlImpl implements BillDAO {
 
     private Bills bills;
     private ServiceStructure serviceStructure;
-    // private String billsPath = "./cbs/bills/";
     private Properties properties;
 
     BillDAOXmlImpl() {
@@ -68,9 +67,6 @@ public class BillDAOXmlImpl implements BillDAO {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            // JAXBContext jaxbContext = JAXBContext.newInstance(Bills.class);
-            // Unmarshaller jaxbUnMarshaller = jaxbContext.createUnmarshaller();
-            // bills = (Bills) jaxbUnMarshaller.unmarshal(file);
         } catch (JAXBException e) {
             e.printStackTrace();
         }
@@ -85,17 +81,18 @@ public class BillDAOXmlImpl implements BillDAO {
 
             jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
             jaxbMarshaller.setProperty(Marshaller.JAXB_SCHEMA_LOCATION, "");
-
+            
             jaxbMarshaller.marshal(bills, file);
-            jaxbMarshaller.marshal(bills, System.out);
-
+            jaxbMarshaller.marshal(bills, System.out); // For development,
+                                                       // remove in final
+                                                       // version
         } catch (JAXBException e) {
             e.printStackTrace();
         }
     }
 
     @Override
-    public void createBill(YearMonth yearMonth) {
+    public void createBill(YearMonth yearMonth) throws Exception {
         Bill bill = new Bill();
         for (Entry<String, Class<? extends Service>> entry : serviceStructure
                 .getServices().entrySet()) {
@@ -110,7 +107,8 @@ public class BillDAOXmlImpl implements BillDAO {
         }
         bill.setDate(yearMonth);
         if (!bills.add(bill)) {
-            System.out.println("Bill already exists!");
+//            System.out.println("Bill already exists!");
+            throw new Exception("Bill already exists!");
         }
 
         marshal();
@@ -136,12 +134,6 @@ public class BillDAOXmlImpl implements BillDAO {
         temp.remove(tempBill);
         bills.setBills(temp);
         marshal();
-    }
-
-    @Override
-    public Set<Bill> listBills() {
-        // TODO Auto-generated method stub
-        return null;
     }
 
 }

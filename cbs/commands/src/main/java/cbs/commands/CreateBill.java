@@ -18,11 +18,20 @@ public class CreateBill extends OsgiCommandSupport {
     @Override
     protected Object doExecute() throws Exception {
         if ((month != null) && (year != null)) {
-            billdao.createBill(new YearMonth(year, month));
-        } else if (((month == null) && (year != null)) || ((month != null) && (year == null))) {
+            try {
+                billdao.createBill(new YearMonth(year, month));
+            } catch (Exception e) {
+                System.out.println(e);
+            }
+        } else if (((month == null) && (year != null))
+                || ((month != null) && (year == null))) {
             System.out.println("Invalid arguments ! Retype!");
         } else {
-            billdao.createBill(new YearMonth());
+            try {
+                billdao.createBill(new YearMonth());
+            } catch (Exception e) {
+                System.out.println(e);
+            }
         }
         return null;
     }
