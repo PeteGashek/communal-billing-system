@@ -135,6 +135,7 @@ public class BillDAOXmlImpl implements BillDAO {
         //  TODO Test this method
         bills.getBills().remove(bill);
         bills.getBills().add(bill);
+        marshal();
     }
 
     @Override
