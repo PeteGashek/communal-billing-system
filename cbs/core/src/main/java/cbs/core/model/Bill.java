@@ -5,12 +5,14 @@ import java.util.Set;
 
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 import org.joda.time.YearMonth;
 
 import cbs.core.adapters.YearMonthAdapter;
 
+@XmlRootElement
 public class Bill {
 
     private YearMonth date;

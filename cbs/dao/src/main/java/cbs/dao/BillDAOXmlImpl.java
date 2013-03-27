@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.Iterator;
 import java.util.Map.Entry;
 import java.util.Properties;
 import java.util.Set;
@@ -107,7 +108,6 @@ public class BillDAOXmlImpl implements BillDAO {
         }
         bill.setDate(yearMonth);
         if (!bills.add(bill)) {
-//            System.out.println("Bill already exists!");
             throw new Exception("Bill already exists!");
         }
 
@@ -115,15 +115,26 @@ public class BillDAOXmlImpl implements BillDAO {
     }
 
     @Override
-    public Bill readBill(YearMonth yearMonth) {
-        // TODO Auto-generated method stub
-        return null;
+    public Bill readBill(YearMonth yearMonth) throws Exception {
+        //  TODO Test this method
+        Bill tempBill = new Bill();
+        tempBill.setDate(yearMonth);
+        
+        for (Iterator<Bill> it = bills.getBills().iterator(); it.hasNext(); ) {
+            Bill bill = it.next();
+            if (bill.equals(tempBill)) {
+                return bill;
+            }
+        }
+        
+        throw new Exception("Bill not found");
     }
 
     @Override
     public void updateBill(Bill bill) {
-        // TODO Auto-generated method stub
-
+        //  TODO Test this method
+        bills.getBills().remove(bill);
+        bills.getBills().add(bill);
     }
 
     @Override
