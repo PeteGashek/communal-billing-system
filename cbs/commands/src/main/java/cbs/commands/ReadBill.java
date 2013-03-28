@@ -1,6 +1,5 @@
 package cbs.commands;
 
-import javax.xml.bind.JAXB;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
@@ -11,7 +10,7 @@ import org.apache.karaf.shell.console.OsgiCommandSupport;
 import org.joda.time.YearMonth;
 
 import cbs.core.model.Bill;
-import cbs.dao.BillDAO;
+import cbs.dao.bill.BillDAO;
 
 @Command(scope = "cbs", name = "readbill", description = "read bill")
 public class ReadBill extends OsgiCommandSupport {

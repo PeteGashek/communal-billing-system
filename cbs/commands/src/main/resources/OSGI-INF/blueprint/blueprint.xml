@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0">
-    <reference id="billdaoxml" interface="cbs.dao.BillDAO" />
+    <reference id="billdaoxml" interface="cbs.dao.bill.BillDAO" />
+    <reference id="serviceupdater" interface="cbs.dao.service.ServiceUpdater" />
     <command-bundle xmlns="http://karaf.apache.org/xmlns/shell/v1.0.0">
         <command name="cbs/createbill">
             <action class="cbs.commands.CreateBill">
@@ -15,6 +16,11 @@
         <command name="cbs/readbill">
             <action class="cbs.commands.ReadBill">
                 <property name="billdao" ref="billdaoxml" />
+            </action>
+        </command>
+        <command name="cbs/updservice">
+            <action class="cbs.commands.UpdateService">
+                <property name="updater" ref="serviceupdater" />
             </action>
         </command>
     </command-bundle>

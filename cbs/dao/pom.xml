@@ -59,7 +59,9 @@
                             org.joda.time.*;version="2.2.0"
                         </Import-Package>
                         <Export-Package>
-                            cbs.dao
+                            cbs.dao.service,
+                            cbs.dao.exceptions,
+                            cbs.dao.bill
                         </Export-Package>
                     </instructions>
                 </configuration>

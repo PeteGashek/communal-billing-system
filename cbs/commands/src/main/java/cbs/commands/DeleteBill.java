@@ -5,7 +5,7 @@ import org.apache.felix.gogo.commands.Command;
 import org.apache.karaf.shell.console.OsgiCommandSupport;
 import org.joda.time.YearMonth;
 
-import cbs.dao.BillDAO;
+import cbs.dao.bill.BillDAO;
 
 @Command(scope = "cbs", name = "deletebill", description = "delete bill")
 public class DeleteBill extends OsgiCommandSupport {

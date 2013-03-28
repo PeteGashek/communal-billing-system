@@ -1,4 +1,4 @@
-package cbs.dao;
+package cbs.dao.bill;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -20,6 +20,8 @@ import cbs.core.model.Bill;
 import cbs.core.model.Bills;
 import cbs.core.model.Service;
 import cbs.core.model.ServiceStructure;
+import cbs.dao.exceptions.BillAlreadyExistsException;
+import cbs.dao.exceptions.BillNotFoundException;
 
 public class BillDAOXmlImpl implements BillDAO {
 
@@ -93,7 +95,7 @@ public class BillDAOXmlImpl implements BillDAO {
     }
 
     @Override
-    public void createBill(YearMonth yearMonth) throws Exception {
+    public void createBill(YearMonth yearMonth) throws BillAlreadyExistsException {
         Bill bill = new Bill();
         for (Entry<String, Class<? extends Service>> entry : serviceStructure
                 .getServices().entrySet()) {
@@ -108,14 +110,14 @@ public class BillDAOXmlImpl implements BillDAO {
         }
         bill.setDate(yearMonth);
         if (!bills.add(bill)) {
-            throw new Exception("Bill already exists!");
+            throw new BillAlreadyExistsException();
         }
 
         marshal();
     }
 
     @Override
-    public Bill readBill(YearMonth yearMonth) throws Exception {
+    public Bill readBill(YearMonth yearMonth) throws BillNotFoundException {
         //  TODO Test this method
         Bill tempBill = new Bill();
         tempBill.setDate(yearMonth);
@@ -127,7 +129,7 @@ public class BillDAOXmlImpl implements BillDAO {
             }
         }
         
-        throw new Exception("Bill not found");
+        throw new BillNotFoundException();
     }
 
     @Override

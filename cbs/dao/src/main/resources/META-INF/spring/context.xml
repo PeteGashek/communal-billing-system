@@ -1,5 +1,5 @@
-<beans xmlns="http://www.springframework.org/schema/beans"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:osgi="http://www.springframework.org/schema/osgi"
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:osgi="http://www.springframework.org/schema/osgi"
     xsi:schemaLocation="
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://cxf.apache.org/core http://cxf.apache.org/schemas/core.xsd
@@ -8,9 +8,14 @@
 
     <bean id="servicestructure" class="cbs.core.model.ServiceStructure" />
 
-    <bean id="billdaoxml" class="cbs.dao.BillDAOXmlImpl">
+
+    <bean id="billdaoxml" class="cbs.dao.bill.BillDAOXmlImpl">
         <property name="serviceStructure" ref="servicestructure" />
     </bean>
+    <bean id="serviceupdater" class="cbs.dao.service.ServiceUpdaterImpl">
+        <property name="billDAO" ref="billdaoxml" />
+    </bean>
 
-    <osgi:service ref="billdaoxml" interface="cbs.dao.BillDAO" />
+    <osgi:service ref="billdaoxml" interface="cbs.dao.bill.BillDAO" />
+    <osgi:service ref="serviceupdater" interface="cbs.dao.service.ServiceUpdater" />
 </beans>

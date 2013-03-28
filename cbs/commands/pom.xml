@@ -44,7 +44,9 @@
                     <instructions>
                         <Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
                         <Import-Package>
-                            cbs.dao,
+                            cbs.dao.exceptions,
+                            cbs.dao.bill,
+                            cbs.dao.service,
                             cbs.core.model,
                             javax.jws,
                             javax.xml.bind,
@@ -55,9 +57,9 @@
                             org.apache.felix.gogo.commands,
                             org.apache.karaf.shell.console,
                             org.osgi.service.blueprint,
-                             org.joda.time.*;version="2.2.0"
+                            org.joda.time.*;version="2.2.0"
                         </Import-Package>
-                        
+
                     </instructions>
                 </configuration>
             </plugin>
